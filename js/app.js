@@ -47,21 +47,15 @@ const playRound = (computerChoice, humanChoice) =>{
 
 const playGame =  () =>{
     
-    
-    while(playerScore < 5){
+ 
         
         let getHumanChoice = humanChoice(),
          getComputerChoice = computerChoice();
          playRound(getComputerChoice, getHumanChoice);
          alert(`player = ${playerScore}, computer = ${computerScore}`);
-         if(playerScore >= 5 ){
-            alert("Jugador gana")
-            break;
-         } else if( computerScore >= 5){
-            alert("Computadora gana")
-            break;
-         }
-        }
+        
+         
+        
 }
 
 
