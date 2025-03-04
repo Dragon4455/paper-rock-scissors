@@ -1,0 +1,67 @@
+1. Funcion eleccion de computadora (random)
+
+2. Funcion eleccion de computadora (jugador)
+
+3. Puntaje de ambos (dos variables individuales)
+
+4. Crrat una funcion de iniciar partido que tome como parametro las elecciones de ambos jugadores. La eleccion del jugador debe ser case-insensitive.
+
+5. Debe ser 5 rondas
+
+switch(humanChoice){
+        case "rock":
+            if(computerChoice === "paper"){
+                console.log(`Player Selection = ${humanChoice},
+                             Computer Selection = ${computerChoice}
+                             
+                            You Lose, ${computerChoice} beats ${humanChoice}`);
+                return computerScore++;
+            }else if(computerChoice === "scissors"){
+                console.log(`Player Selection = ${humanChoice},
+                             Computer Selection = ${computerChoice}
+                             
+                            You Won, ${humanChoice} beats ${computerChoice} `);
+                return playerScore++
+            } else{
+                console.log("Draw");
+                break;
+
+            }
+        case "paper":
+            if(computerChoice === "scissors"){
+                console.log(`Player Selection = ${humanChoice},
+                             Computer Selection = ${computerChoice}
+                             
+                            You Lose, ${computerChoice} beats ${humanChoice}`);
+                return computerScore++;
+            }else if(computerChoice === "rock"){
+                console.log(`Player Selection = ${humanChoice},
+                             Computer Selection = ${computerChoice}
+                             
+                            You Won, ${humanChoice} beats ${computerChoice} `);
+                return playerScore++
+            } else{
+                console.log("Draw");
+                break;
+            }
+        case "scissors":
+            if(computerChoice === "rock"){
+                console.log(`Player Selection = ${humanChoice},
+                             Computer Selection = ${computerChoice}
+                             
+                            You Lose, ${computerChoice} beats ${humanChoice}`);
+                return computerScore++;
+                
+            }else if(computerChoice === "paper"){
+                console.log(`Player Selection = ${humanChoice},
+                             Computer Selection = ${computerChoice}
+                             
+                            You Won, ${humanChoice} beats ${computerChoice} `);
+                return playerScore++
+            } else{
+                console.log("Draw");
+                break;
+
+            }
+  
+    }
