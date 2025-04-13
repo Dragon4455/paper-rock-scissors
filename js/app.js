@@ -1,62 +1,76 @@
+const $button = document.querySelector(".buttons");
+const $result = document.querySelector("#result");
+const $score = document.querySelector("#score");
+
 const options = ['rock', 'paper','scissors'];
 
 let playerScore = 0,
     computerScore = 0;
-  
+
 const computerChoice = (min = 0, max = 2) =>{
    let computerSelection =  Math.floor(Math.random() * (max - min + 1) + min);
     return options[computerSelection];
 }
 
-const humanChoice = ()=>{
-    let playerSelection = prompt('¿Rock, Paper or Scissors?');
+const humanChoice = (e)=>{
+    let playerSelection = e.target.id
     
-    playerSelection = playerSelection === null ? playerSelection="": playerSelection.toLowerCase();
-
-    if(typeof playerSelection != String && !(options.includes(playerSelection))){
-        alert("Debes seleccionar una opción valida ");
-        humanChoice();
-    } else{
-        return playerSelection;
-    }
+ switch(playerSelection){
+    case "rock":
+    case "paper":
+    case "scissors":
+        console.log(playerSelection)
+        return  playerSelection
+      
+ }
 
 }
 
-const playRound = (computerChoice, humanChoice) =>{
+const playRound = (humanChoice, computerChoice) =>{
 
     
     if((humanChoice === "paper" && computerChoice === "rock") || 
     (humanChoice === "scissors" && computerChoice === "paper")||
     (humanChoice === "rock" && computerChoice === "scissors")){
 
-        console.log(`ganaste, ${humanChoice} vence ${computerChoice}`);
+        $result.textContent = `You win, ${humanChoice} beats ${computerChoice}`;
         return playerScore++;
 
     } else if((humanChoice === "paper" && computerChoice === "scissors") || 
     (humanChoice === "scissors" && computerChoice === "rock")||
     (humanChoice === "rock" && computerChoice === "paper")){
 
-        console.log(`perdiste, ${computerChoice} vence ${humanChoice}`);
+        $result.textContent = `You lose, ${computerChoice} beats ${humanChoice}`;
         return computerScore++;
     }else{
-        console.log("empate")
+        $result.textContent = "Draw";
     }
         
 
 } 
 
-const playGame =  () =>{
+
+
+$button.addEventListener("click", (e)=>{
+    const setHumanChoice = humanChoice(e);
+    const getComputerChoice = computerChoice();
     
- 
-        
-        let getHumanChoice = humanChoice(),
-         getComputerChoice = computerChoice();
-         playRound(getComputerChoice, getHumanChoice);
-         alert(`player = ${playerScore}, computer = ${computerScore}`);
-        
-         
-        
-}
+    playRound(setHumanChoice, getComputerChoice);
+    if(playerScore === 5){
+        $result.textContent = "The players Win the game. Press any option to new game";
+        $score.textContent = `player = ${playerScore}, computer = ${computerScore}`;
+        playerScore = 0;
+        computerScore = 0;
+    } else if(computerScore === 5){
+        $result.textContent = "The players Lose the game. Press any option to new game";
+        $score.textContent = `player = ${playerScore}, computer = ${computerScore}`;
+        playerScore = 0;
+        computerScore = 0;
+    } else{
+
+        $score.textContent = `player = ${playerScore}, computer = ${computerScore}`;
+    }
 
 
-// playGame();
+});
+    
